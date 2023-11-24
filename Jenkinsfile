@@ -1,6 +1,6 @@
 node{
     stage('code checkout'){
-        git 'hhttps://github.com/Kushal-200/capstone-insurance-project.git'
+        git 'https://github.com/Kushal-200/capstone-insurance-project.git'
     }
 
     
