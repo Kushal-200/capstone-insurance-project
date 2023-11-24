@@ -1,26 +1,27 @@
 node{
-
     stage('code checkout'){
-        git 'https://github.com/shubhamkushwah123/capstone-project-demo.git'
+        git 'hhttps://github.com/Kushal-200/capstone-insurance-project.git'
     }
+
     
     stage('build'){
       sh 'mvn clean package'  
     }
     
     stage('package as docker image'){
-      sh 'docker build -t shubhamkushwah123/insure-me:1.0 .'
+      sh 'docker build -t Kushal-200/capstone-insurance-project:1.0 .'
     }
     
     stage('push to dockerhub'){
-      withCredentials([string(credentialsId: 'docker-hub-password', variable: 'dockerHubPassword')]) {
-            sh "docker login -u shubhamkushwah123 -p ${dockerHubPassword}"
-            sh 'docker push shubhamkushwah123/insure-me:1.0'
-        }
+        
+    withCredentials([string(credentialsId: 'DockerPass', variable: 'DockerPass')]) {
+    sh "docker login -u Kushal-200 -p ${DockerPass}"
+    sh 'docker push Kushal-200/capston-insurance-project:1.0'
+    }
     }
     
     stage('deploy to test-environment') {
-        ansiblePlaybook become: true, credentialsId: 'ansible-ssh-jenkins-key', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: 'configure-test-server.yml'
+        ansiblePlaybook become: true,  disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: 'configure-test-server.yml'
     }
     
     
