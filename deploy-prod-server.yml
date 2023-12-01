@@ -13,4 +13,4 @@
 
   - name: deploy insureme application
     command: sudo docker run -itd -p 8081:8081 --name insure-me1 Kushal-200/capston-insurance-project:1.0
-2
+
