@@ -12,5 +12,6 @@
     command: sudo systemctl start docker
 
   - name: deploy insureme application
+    command: sudo docker pull kushal-200/capston-insurance-project:1.0
     command: sudo docker run -itd -p 8081:8081 --name insure-me1 kushal-200/capston-insurance-project:1.0
 
